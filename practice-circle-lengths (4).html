@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>تمرین: رابطه‌های طولی در دایره</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f8f7;--ink:#12303a;--teal:#0b7f80;--pink:#d1346f;--card:#fff;--line:#cfe3e0;--ok:#1b8f5a;--mut:#58737a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b1f;--ink:#e3f1ef;--teal:#37c4be;--pink:#ff7aa8;--card:#16282d;--line:#27424a;--ok:#4fd592;--mut:#97b3b8}}
+:root[data-theme="dark"]{--bg:#0e1b1f;--ink:#e3f1ef;--teal:#37c4be;--pink:#ff7aa8;--card:#16282d;--line:#27424a;--ok:#4fd592;--mut:#97b3b8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:2;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:28px 28px}
+header{background:var(--teal);color:#fff;padding:12px 16px}
+header b{font-size:1.1rem;font-weight:800}
+.sc{font-size:.85rem;opacity:.9}
+.dots{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.dots button{width:34px;height:34px;border-radius:50%;border:2px solid #fff;background:transparent;color:#fff;font:inherit;cursor:pointer;line-height:1}
+.dots button.on{background:#fff;color:var(--teal);font-weight:800}
+.dots button.done{background:var(--ok);border-color:var(--ok)}
+main{max-width:720px;margin:0 auto;padding:14px 14px 60px}
+h2{margin:6px 0;color:var(--teal);font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0}
+.stmt{font-size:1.05rem}
+.fld{display:flex;align-items:center;gap:10px;margin:6px 0}
+.fld span{min-width:130px}
+input{font:inherit;width:120px;padding:2px 10px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);direction:ltr;text-align:center}
+input.ok{border-color:var(--ok)}input.no{border-color:var(--pink)}
+button.go,.opt{font:inherit;cursor:pointer;border-radius:10px;border:2px solid var(--teal);background:transparent;color:var(--ink);padding:3px 14px;margin:4px 4px 4px 0}
+button.go{background:var(--teal);color:#fff;font-weight:600}
+button.go.p{background:var(--pink);border-color:var(--pink)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.opt{display:block;width:100%;text-align:right;margin:6px 0}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{border-color:var(--pink);color:var(--pink)}
+.fb{min-height:1.8em;font-weight:600}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--pink)}
+.hint{border-right:4px solid var(--teal);padding:0 12px;margin:6px 0;background:var(--bg);border-radius:6px}
+.stp{border-right:4px solid var(--pink);padding:0 12px;margin:6px 0}
+.f2{direction:ltr;text-align:center;font-weight:600;color:var(--pink);margin:2px 0 8px}
+.note{color:var(--mut);font-size:.92rem}
+.nav{display:flex;justify-content:space-between;margin-top:14px}
+.typing::after{content:"▍";color:var(--pink);animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.typing::after{animation:none}}
+.fig{width:100%;max-height:34vh;direction:ltr;display:block;margin:8px auto 0}
+.cc{fill:none;stroke:var(--ink);stroke-width:2}.cc.p{stroke:#8e63f2}.cc.s{stroke:var(--teal)}
+.ll{stroke:var(--ink);stroke-width:1.8}.ll.a{stroke:var(--teal);stroke-width:2.5}.ll.b{stroke:var(--pink);stroke-width:2.5;stroke-dasharray:6 4}.ll.c{stroke:var(--pink);stroke-width:2.5}.ll.d{stroke-dasharray:3 3;stroke-width:1.2}
+.dd{fill:var(--card);stroke:var(--ink);stroke-width:2}
+.tt{font:600 15px Vazirmatn,sans-serif;fill:var(--ink)}.lg{font:600 14px Vazirmatn,sans-serif;fill:var(--pink)}
+.sh{fill:#f2a33a;fill-opacity:.55;stroke:none}.band{fill:none;stroke:var(--pink);stroke-width:3}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
+.tile{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:14px;padding:8px;cursor:pointer;text-align:center}
+.tile.dn{border-color:var(--ok)}
+.tile .fig{max-height:110px;margin:0 auto}
+.tile .num{font-weight:800;color:var(--teal)}.tile .t2{font-size:.9rem;margin-top:4px}
+button.hm{float:left;margin:0;background:#fff;color:var(--teal);border-color:#fff}
+.m{white-space:nowrap}.warn{color:var(--pink);font-weight:600}
+</style>
+</head>
+<body>
+<header><b>تمرین‌های رابطه‌های طولی در دایره</b><div class="sc" id="sc"></div><button class="go hm" id="hm">فهرست تمرین‌ها</button></header>
+<main id="box"></main>
+<script>
+const $=s=>document.querySelector(s),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const h=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const Q=[
+{t:'در یک دایره، وتر AB و وتر CD در نقطهٔ M یکدیگر را قطع کرده‌اند. وتر AB، وتر CD را که 9 سانتی‌متر است به نسبت 1 به 2 تقسیم کرده است. اگر AB = 11 سانتی‌متر باشد، وتر CD وتر AB را به چه نسبتی قطع می‌کند؟ طول دو قسمتی را که AB پیدا می‌کند بنویس.',
+ f:[['قسمت کوچک‌تر AB',2],['قسمت بزرگ‌تر AB',9]],
+ h:['اول ببین CD به چه دو قسمتی تقسیم شده است: عدد 9 را به نسبت 1 به 2 تقسیم کن.','قضیهٔ وترهای متقاطع را بنویس: حاصل‌ضرب دو قسمت یک وتر برابر حاصل‌ضرب دو قسمت وتر دیگر است.','یکی از قسمت‌های AB را x بگیر؛ قسمت دیگر 11 − x است.'],
+ s:['CD به دو قسمت 3 و 6 تقسیم شده است (CM = 3 و MD = 6).','طبق قضیهٔ وترهای متقاطع:','#CM × MD = AM × MB  ⟹  18 = x(11 − x)','#x² − 11x + 18 = 0  ⟹  (x − 2)(x − 9) = 0','پس AB به دو قسمت 2 و 9 تقسیم می‌شود؛ نسبت 2 به 9.']},
+{t:'از نقطهٔ P بیرون یک دایره، مماس PA به طول 10√3 رسم شده است (A روی دایره است). همچنین خطی از P گذرانده‌ایم که دایره را در دو نقطهٔ B و C قطع می‌کند و BC = 20. طول‌های PB و PC را بیاب.',
+ f:[['PB',10],['PC',30]],
+ h:['قضیهٔ مماس و قاطع را یادآوری کن: PA² = PB × PC.','PA² چند است؟ مربع 10√3 را حساب کن.','اگر PB = x بگیری، PC = x + 20 می‌شود.'],
+ s:['طبق قضیهٔ مماس و قاطع:','#PA² = PB × PC  ⟹  300 = x(x + 20)','#x² + 20x − 300 = 0  ⟹  (x − 10)(x + 30) = 0','طول نمی‌تواند منفی باشد، پس PB = 10 و PC = 10 + 20 = 30.']},
+{t:'دو دایره مماس درون‌اند. دو قطر AB و CD از دایرهٔ بزرگ‌تر بر هم عمودند و AB از مرکز دایرهٔ کوچک می‌گذرد. M نقطهٔ برخورد دایرهٔ کوچک با AB (طرف A) و N نقطهٔ برخورد آن با CD است. اگر AM = 16 و ND = 10 باشد، شعاع دو دایره را بیاب.',
+ f:[['شعاع دایرهٔ بزرگ R',25],['شعاع دایرهٔ کوچک r',17]],
+ h:['شعاع‌ها را R و r بنام. AM چه رابطه‌ای با R و r دارد؟ (AM = AB − MB)','فاصلهٔ مرکزهای دو دایرهٔ مماس درون برابر R − r است.','یک مثلث قائم‌الزاویه با رأس‌های O (مرکز بزرگ)، O′ (مرکز کوچک) و N بساز.'],
+ s:['AM = AB − MB = 2R − 2r = 16، پس R − r = 8 و OO′ = 8.','در مثلث قائم‌الزاویهٔ OO′N داریم ON = R − 10 و O′N = r:','#(R − 10)² + 8² = r²  ،  R = r + 8','#(r − 2)² + 64 = r²  ⟹  −4r + 68 = 0','#r = 17  ،  R = 25']},
+{t:'چند دایره در نقطهٔ T بر هم مماس‌اند و M نقطه‌ای روی مماس مشترک آنهاست. از M بر هر دایره یک مماس دیگر هم رسم کرده‌ایم (به ترتیب MT₁، MT₂، MT₃، ...). ثابت کن MT₁ = MT₂ = MT₃ = ...',
+ mc:[['از یک نقطهٔ بیرون دایره دو مماس به طول برابر می‌شود؛ پس برای هر دایره MTᵢ = MT.',1],['چون همهٔ دایره‌ها شعاع برابر دارند.',0],['چون MTᵢ بر شعاع عمود نیست.',0]],
+ h:['MT بر همهٔ دایره‌ها مماس است. از M برای هر دایره چند مماس داریم؟','دو مماس رسم‌شده از یک نقطهٔ بیرون دایره چه رابطه‌ای با هم دارند؟','برای دایرهٔ اول MT₁ را با MT مقایسه کن، سپس همین کار را برای بقیه تکرار کن.'],
+ s:['از M بر دایرهٔ اول دو مماس داریم: MT و MT₁. دو مماس رسم‌شده از یک نقطه برابرند، پس MT₁ = MT.','همین استدلال برای دایرهٔ دوم و سوم و ... هم درست است، چون MT بر همهٔ آنها مماس است: MT₂ = MT و MT₃ = MT.','#MT₁ = MT₂ = MT₃ = … = MT']},
+{t:'طول مماس مشترک خارجی دو دایرهٔ متخارج 3√7 و طول مماس مشترک داخلی آنها √15 و فاصلهٔ مرکزها 8 واحد است. شعاع دو دایره را بیاب.',
+ f:[['شعاع بزرگ‌تر R',4],['شعاع کوچک‌تر r',3]],
+ h:['مماس مشترک خارجی: طول = √(d² − (R − r)²) و مماس مشترک داخلی: طول = √(d² − (R + r)²).','با مماس داخلی شروع کن: 15 = 64 − (R + r)². R + r چند می‌شود؟','حالا مماس خارجی را بنویس تا R − r را پیدا کنی.'],
+ s:['از مماس داخلی:','#15 = 64 − (R + r)²  ⟹  R + r = 7','از مماس خارجی:','#63 = 64 − (R − r)²  ⟹  R − r = 1','#R = 4  ،  r = 3']},
+{t:'سه دایره به شعاع r دو به دو مماس‌اند و نخی دور آنها بسته شده است. می‌خواهیم نشان دهیم طول نخ برابر a·r + b·πr است. a و b را پیدا کن. (بعد در راه‌حل، مساحت ناحیهٔ بین سه دایره را هم می‌بینی.)',
+ f:[['a (ضریب r)',6],['b (ضریب πr)',2]],
+ h:['مرکزهای سه دایره رأس‌های یک مثلث متساوی‌الاضلاع به ضلع 2r هستند.','نخ از سه پارهٔ مستقیم و سه کمان ساخته شده است. هر پارهٔ مستقیم برابر فاصلهٔ دو مرکز است.','زاویهٔ هر کمان را از 360 منهای 60 و 90 و 90 به دست بیاور.'],
+ s:['سه پارهٔ مستقیم: 3 × 2r = 6r.','هر کمان 120° است و سه کمان با هم یک دایرهٔ کامل می‌شوند: 2πr.','#L = 6r + 2πr','مساحت ناحیهٔ بین سه دایره = مساحت مثلث − سه قطاع 60°:','#S = √3 r² − ½ πr² = r²(√3 − ½π)']},
+{t:'فاصلهٔ مرکزهای دو دایرهٔ مماس درون 2 سانتی‌متر و مساحت ناحیهٔ بین آنها 16π سانتی‌متر مربع است. شعاع دو دایره را بیاب.',
+ f:[['شعاع بزرگ‌تر R',5],['شعاع کوچک‌تر r',3]],
+ h:['برای دو دایرهٔ مماس درون: d = R − r.','مساحت بین دو دایره برابر π(R² − r²) است.','R² − r² = (R − r)(R + r)'],
+ s:['#R − r = 2','#π(R² − r²) = 16π  ⟹  (R − r)(R + r) = 16','#2(R + r) = 16  ⟹  R + r = 8','#R = 5  ،  r = 3']},
+{t:'در دایره‌ای به شعاع 4، قطاعی با زاویهٔ مرکزی 60° داریم. مساحت قطعهٔ دایره (بین وتر و کمان) را حساب کن و تا دو رقم اعشار بنویس.',
+ f:[['مساحت (تقریبی)',1.45,.03]],
+ h:['مساحت قطعه = مساحت قطاع − مساحت مثلث.','مثلثی که از دو شعاع و وتر ساخته می‌شود، زاویهٔ 60° دارد؛ پس متساوی‌الاضلاع است.','مساحت قطاع برابر یک‌ششم مساحت دایره است.'],
+ s:['مساحت قطاع یک‌ششم دایره است:','#S1 = ⅙ × π × 4² = 8π ÷ 3','مثلث متساوی‌الاضلاع به ضلع 4:','#S2 = (√3 ÷ 4) × 16 = 4√3','#S = 8π ÷ 3 − 4√3 ≈ 1.45']}
+];
+
+const PI=Math.PI,pol=(c,r,d)=>[c[0]+r*Math.cos(d*PI/180),c[1]+r*Math.sin(d*PI/180)];
+const dst=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]),fx=p=>p[0].toFixed(1)+' '+p[1].toFixed(1);
+const SV=x=>`<svg viewBox="0 0 320 240" class="fig">${x}</svg>`;
+const Cc=(c,r,k='')=>`<circle class="cc ${k}" cx="${c[0]}" cy="${c[1]}" r="${r}"/>`;
+const Ln=(a,b,k='')=>`<line class="ll ${k}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`;
+const Dt=p=>`<circle class="dd" cx="${p[0]}" cy="${p[1]}" r="3.5"/>`;
+const Tx=(p,t,o=[160,120],k=15)=>{const d=dst(p,o)||1;return `<text class="tt" x="${p[0]+(p[0]-o[0])/d*k-5}" y="${p[1]+(p[1]-o[1])/d*k+5}">${t}</text>`};
+const At=(p,t,dx,dy)=>`<text class="tt" x="${p[0]+dx}" y="${p[1]+dy}">${t}</text>`;
+const Lg=(...t)=>t.map((x,i)=>`<text class="lg" x="8" y="${18+i*18}">${x}</text>`).join('');
+const ix=(p1,p2,p3,p4)=>{const d=(p1[0]-p2[0])*(p3[1]-p4[1])-(p1[1]-p2[1])*(p3[0]-p4[0]),a=p1[0]*p2[1]-p1[1]*p2[0],b=p3[0]*p4[1]-p3[1]*p4[0];return[(a*(p3[0]-p4[0])-(p1[0]-p2[0])*b)/d,(a*(p3[1]-p4[1])-(p1[1]-p2[1])*b)/d]};
+const tgp=(M,c,r)=>{const d=dst(M,c),f=Math.atan2(M[1]-c[1],M[0]-c[0]),a=Math.acos(r/d);return[pol(c,r,(f+a)*180/PI),pol(c,r,(f-a)*180/PI)]};
+const secp=(M,Q,c,r)=>{const dx=Q[0]-M[0],dy=Q[1]-M[1],L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,fx_=M[0]-c[0],fy=M[1]-c[1],b=fx_*ux+fy*uy,k=fx_*fx_+fy*fy-r*r,s=Math.sqrt(b*b-k);return[-b-s,-b+s].map(t=>[M[0]+t*ux,M[1]+t*uy])};
+const FIG=[
+()=>{const O=[160,120],R=95,A=pol(O,R,-60),B=pol(O,R,115),C=pol(O,R,25),D=pol(O,R,-140),M=ix(A,B,C,D);
+ return SV(Cc(O,R)+Ln(A,B,'a')+Ln(C,D,'c')+[A,B,C,D,M].map(Dt).join('')+Tx(A,'A')+Tx(B,'B')+Tx(C,'C')+Tx(D,'D')+At(M,'M',6,-6)+Lg('AB = 11','CD = 9'))},
+()=>{const O=[215,120],R=70,P=[35,190],A=tgp(P,O,R).sort((a,b)=>a[1]-b[1])[0],[B,C]=secp(P,[O[0],O[1]+30],O,R);
+ return SV(Cc(O,R)+Ln(P,A,'a')+Ln(P,C,'c')+[P,A,B,C].map(Dt).join('')+At(P,'P',-12,22)+Tx(A,'A',O)+Tx(B,'B',O,12)+Tx(C,'C',O)+Lg('PA = 10√3','BC = 20'))},
+()=>{const O=[160,120],R=100,r=68,Q=[192,120],A=[60,120],B=[260,120],M=[124,120],N=[160,60],N2=[160,180],D=[160,20],C=[160,220];
+ return SV(Cc(O,R)+Cc(Q,r,'s')+Ln(A,B)+Ln(D,C)+[O,Q,M,N,N2,B].map(Dt).join('')+At(A,'A',-14,5)+At(B,'B',6,5)+At(D,'D',-5,-6)+At(C,'C',-5,16)+At(M,'M',-8,-8)+At(N,'N',6,4)+At(N2,'N′',6,6)+At(O,'O',-16,16)+At(Q,'O′',2,-8)+Lg('AM = 16','ND = 10'))},
+()=>{const T=[160,150],M=[45,150],cs=[[[160,115],35],[[160,90],60],[[160,195],45]],lb=['T₁','T₂','T₃'];let s=Ln([15,150],[305,150])+cs.map(([c,r])=>Cc(c,r)).join('');
+ cs.forEach(([c,r],i)=>{const p=tgp(M,c,r).sort((a,b)=>dst(b,T)-dst(a,T))[0];s+=Ln(M,p,'a')+Dt(p)+At(p,lb[i],5,i===2?18:-6)});
+ return SV(s+Dt(M)+Dt(T)+At(M,'M',-8,-8)+At(T,'T',4,-8))},
+()=>{const O1=[90,120],O2=[234,120],R1=72,R2=54,d=144,sE=(R1-R2)/d,cE=Math.sqrt(1-sE*sE),sI=(R1+R2)/d,cI=Math.sqrt(1-sI*sI);
+ const e1=[O1[0]+R1*sE,120-R1*cE],e2=[O2[0]+R2*sE,120-R2*cE],f1=[O1[0]+R1*sE,120+R1*cE],f2=[O2[0]+R2*sE,120+R2*cE];
+ const i1=[O1[0]+R1*sI,120-R1*cI],i2=[O2[0]-R2*sI,120+R2*cI],j1=[O1[0]+R1*sI,120+R1*cI],j2=[O2[0]-R2*sI,120-R2*cI];
+ return SV(Cc(O1,R1)+Cc(O2,R2,'p')+Ln(O1,O2,'d')+Ln(e1,e2,'a')+Ln(f1,f2,'a')+Ln(i1,i2,'c')+Ln(j1,j2,'c')+[O1,O2].map(Dt).join('')+At(O1,'O',-14,16)+At(O2,'O′',-6,16)+Lg('d = 8'))},
+()=>{const r=45,P=[[115,85],[205,85],[160,163]],G=[160,111];
+ const nr=(p,q)=>{const dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);let n=[dy/l,-dx/l];const m=[(p[0]+q[0])/2-G[0],(p[1]+q[1])/2-G[1]];if(n[0]*m[0]+n[1]*m[1]<0)n=[-n[0],-n[1]];return n};
+ const n=[nr(P[0],P[1]),nr(P[1],P[2]),nr(P[2],P[0])],o=(p,v)=>[p[0]+r*v[0],p[1]+r*v[1]];
+ const a1=o(P[0],n[0]),b1=o(P[1],n[0]),b2=o(P[1],n[1]),c2=o(P[2],n[1]),c3=o(P[2],n[2]),a3=o(P[0],n[2]);
+ const mid=(i,j)=>[(P[i][0]+P[j][0])/2,(P[i][1]+P[j][1])/2],m1=mid(0,1),m2=mid(1,2),m3=mid(2,0);
+ return SV(`<path class="sh" d="M${fx(m1)}A${r} ${r} 0 0 0 ${fx(m2)}A${r} ${r} 0 0 0 ${fx(m3)}A${r} ${r} 0 0 0 ${fx(m1)}Z"/>`+P.map(c=>Cc(c,r)).join('')
+ +`<path class="band" d="M${fx(a1)}L${fx(b1)}A${r} ${r} 0 0 1 ${fx(b2)}L${fx(c2)}A${r} ${r} 0 0 1 ${fx(c3)}L${fx(a3)}A${r} ${r} 0 0 1 ${fx(a1)}Z"/>`
+ +Ln(P[0],P[1],'d')+Ln(P[1],P[2],'d')+Ln(P[2],P[0],'d')+P.map(Dt).join('')+At(P[0],'A',-18,-4)+At(P[1],'B',8,-4)+At(P[2],'C',8,16)+At(mid(0,1),'r',-14,-8)+At(mid(0,1),'r',3,-8)+Lg('طول نخ = ؟'))},
+()=>{const O=[150,120],R=95,r=57,Q=[188,120];
+ const ring=`<path class="sh" fill-rule="evenodd" d="M${O[0]-R} 120A${R} ${R} 0 1 0 ${O[0]+R} 120A${R} ${R} 0 1 0 ${O[0]-R} 120ZM${Q[0]-r} 120A${r} ${r} 0 1 0 ${Q[0]+r} 120A${r} ${r} 0 1 0 ${Q[0]-r} 120Z"/>`;
+ return SV(ring+Cc(O,R)+Cc(Q,r)+Ln(O,Q,'c')+[O,Q].map(Dt).join('')+At(O,'O',-16,18)+At(Q,'O′',0,-10)+Lg('OO′ = 2','S = 16π'))},
+()=>{const O=[110,120],R=95,A=pol(O,R,-30),B=pol(O,R,30);
+ return SV(`<path class="sh" d="M${fx(A)}A${R} ${R} 0 0 1 ${fx(B)}Z"/>`+Cc(O,R)+Ln(O,A)+Ln(O,B)+Ln(A,B,'c')+[O,A,B].map(Dt).join('')+At(O,'O',-16,5)+At(A,'A',6,-4)+At(B,'B',6,14)+At([O[0]+45,O[1]-26],'4',-6,-2)+At([O[0]+45,O[1]+34],'4',-6,0)+At(O,'60°',18,5))}
+];
+const TITLES=['وترهای متقاطع','مماس و قاطع','دو دایرهٔ مماس درون','مماس‌های برابر','مماس‌های مشترک','سه دایرهٔ مماس','مساحت بین دو دایره','قطعهٔ دایره'];
+const st=Q.map(()=>({att:0,hint:0,ok:false,sol:0,vals:[]}));let cur=0;
+const num=v=>parseFloat(String(v).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫،,]/g,'.').replace(/\s/g,''));
+const MC='A-Za-z0-9√π°′₁₂₃²⟹×÷=−+()·⅙½…≈',MRE=new RegExp('['+MC+'](?:['+MC+' ,]|\\.(?=\\d))*','g');
+function segs(t){const o=[],cnt=(x,ch)=>x.split(ch).length-1;let last=0,m;MRE.lastIndex=0;
+ while((m=MRE.exec(t))){let a=m.index,c=m[0].replace(/[ ,]+$/,'');
+  for(;;){const op=cnt(c,'('),cl=cnt(c,')');
+   if(c[0]==='('&&op>cl||c[0]===')'){c=c.slice(1);a++}
+   else if(c[c.length-1]===')'&&cl>op||c[c.length-1]==='('){c=c.slice(0,-1)}
+   else if(c[0]===' '){c=c.slice(1);a++}
+   else break}
+  if(!c){MRE.lastIndex=m.index+1;continue}
+  o.push([t.slice(last,a),0],[c,1]);last=a+c.length;MRE.lastIndex=last}
+ o.push([t.slice(last),0]);return o.filter(x=>x[0])}
+const rich=t=>segs(t).map(([x,m])=>m?`<bdi dir="ltr" class="m">${x}</bdi>`:x).join('');
+async function ty(e,t){e.classList.add('typing');for(const [x,mm] of segs(t)){let n;if(mm){n=document.createElement('bdi');n.dir='ltr';n.className='m';e.append(n)}else{n=document.createTextNode('');e.append(n)}
+ for(const c of x){n.textContent+=c;await sleep(c===' '?25:40)}}e.classList.remove('typing');e.scrollIntoView({block:'nearest'})}
+function mark(){$('#sc').textContent='حل‌شده: '+st.filter(s=>s.ok).length+' از '+Q.length}
+function stepEl(t){const e=h('div',t[0]==='#'?'f2':'stp');e.innerHTML=rich(t.replace(/^#/,''));return e}
+function render(i){
+ cur=i;const q=Q[i],s=st[i],b=$('#box');b.innerHTML='';mark();
+ b.append(h('h2','',`تمرین ${i+1}`));
+ const c1=h('div','card');const fg=h('div','figw');fg.innerHTML=FIG[i]();const sm=h('div','stmt');sm.innerHTML=rich(q.t);c1.append(sm,fg);b.append(c1);
+ const c2=h('div','card'),fb=h('div','fb');
+ c2.append(h('div','note','اول خودت فکر کن و جواب را بنویس. پاسخ درست یا غلط را همین‌جا می‌فهمی.'));
+ const done=()=>{fb.className='fb ok';fb.textContent='آفرین! جوابت درست است. حالا می‌توانی راه‌حل را با راه خودت مقایسه کنی.'};
+ if(q.mc){q.mc.forEach(([t,ok])=>{const o=h('button','opt');o.innerHTML=rich(t);o.onclick=()=>{s.att++;if(ok){o.classList.add('ok');s.ok=true;done();mark()}else{o.classList.add('no');fb.className='fb no';fb.textContent='این گزینه درست نیست. دوباره فکر کن یا راهنمایی بگیر.'}refresh()};c2.append(o)})}
+ else{
+  const ins=q.f.map(([lab,v],j)=>{const r=h('label','fld'),inp=document.createElement('input');inp.inputMode='decimal';inp.value=s.vals[j]||'';const sp=h('span');sp.innerHTML=rich(lab);r.append(sp,inp);c2.append(r);return inp});
+  const bt=h('button','go','بررسی پاسخ');
+  bt.onclick=()=>{s.att++;s.vals=ins.map(x=>x.value);let all=true;
+   ins.forEach((x,j)=>{const ok=Math.abs(num(x.value)-q.f[j][1])<(q.f[j][2]||.005);x.className=x.value.trim()?(ok?'ok':'no'):'';if(!ok)all=false});
+   if(all){s.ok=true;done();mark()}else{fb.className='fb no';fb.textContent='هنوز درست نیست. فیلدهای قرمز را دوباره بررسی کن.'}refresh()};
+  c2.append(bt)}
+ c2.append(fb);b.append(c2);
+ const c3=h('div','card'),hl=h('div'),hb=h('button','go','راهنمایی بگیر'),sl=h('div'),sb=h('button','go p','نمایش گام بعدی راه‌حل'),sn=h('div','note');
+ for(let k=0;k<s.hint;k++){const e=h('div','hint');e.innerHTML=rich(`راهنمایی ${k+1}: ${q.h[k]}`);hl.append(e)}
+ hb.onclick=()=>{const e=h('div','hint');hl.append(e);ty(e,`راهنمایی ${s.hint+1}: ${q.h[s.hint]}`);s.hint++;refresh()};
+ for(let k=0;k<s.sol;k++)sl.append(stepEl(q.s[k]));
+ const unl=()=>s.att>0||s.hint>=1||s.ok;
+ sb.onclick=()=>{if(!unl()){sn.className='note warn';sn.textContent='🔒 هنوز باز نشده! اول یک بار جواب را امتحان کن یا یک راهنمایی ببین؛ بعد راه‌حل باز می‌شود.';return}const t=q.s[s.sol],e=h('div',t[0]==='#'?'f2':'stp');sl.append(e);ty(e,t.replace(/^#/,''));s.sol++;refresh()};
+ c3.append(hl,hb,h('hr'),sl,sb,sn);b.append(c3);
+ function refresh(){hb.disabled=s.hint>=3;hb.textContent=s.hint?`راهنمایی بعدی (${s.hint} از 3)`:'راهنمایی بگیر (3 راهنمایی)';
+  const un=unl();sb.disabled=s.sol>=q.s.length;sb.style.opacity=un?'':'.65';sb.textContent=s.sol>=q.s.length?'راه‌حل کامل شد':'نمایش گام بعدی راه‌حل';
+  sn.className='note';sn.textContent=un?'':'🔒 راه‌حل بعد از یک بار پاسخ دادن یا دیدن یک راهنمایی باز می‌شود.'}
+ refresh();
+ const nv=h('div','nav'),pv=h('button','go','▶ قبلی'),nx=h('button','go','بعدی ◀');
+ pv.disabled=i===0;nx.disabled=i===Q.length-1;pv.onclick=()=>render(i-1);nx.onclick=()=>render(i+1);const hm2=h('button','go p','فهرست');hm2.onclick=home;nv.append(nx,hm2,pv);b.append(nv);
+}
+function home(){cur=-1;mark();const b=$('#box');b.innerHTML='';b.append(h('h2','','انتخاب تمرین'),h('div','note','یک تمرین را انتخاب کن. شکل هر تمرین جزو صورت سؤال است.'));
+ const g=h('div','grid');Q.forEach((q,i)=>{const c=h('button','tile'+(st[i].ok?' dn':''));c.innerHTML=`<div class="num">تمرین ${i+1}${st[i].ok?' ✓':''}</div>${FIG[i]()}<div class="t2">${TITLES[i]}</div>`;c.onclick=()=>render(i);g.append(c)});b.append(g)}
+$('#hm').onclick=home;
+home();
+</script>
+</body>
+</html>
